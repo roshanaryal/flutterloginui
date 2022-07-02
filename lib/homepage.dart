@@ -32,19 +32,7 @@ class _HomePageState extends State<HomePage> {
 
         },
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Welcome back",
-                style: TextStyle(fontSize: 16),
-              ),
-            )
-          ],
-        ),
-      ),
+      body: SettingsPage()
     );
   }
 }
