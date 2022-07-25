@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
 import 'package:firstflutterapp/forgotpassword.dart';
+import 'package:firstflutterapp/profilepage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homepage.dart';
 
@@ -32,7 +34,7 @@ class _LOginPageState extends State<LOginPage> {
                 ),
                 Text(
                   "Welcome to our flutter app",
-                  style: TextStyle(fontSize: 20, color: Colors.red),
+                  style: TextStyle(fontSize: 20, color: Colors.red,),
                 ),
                 SizedBox(
                   height: 16,
@@ -147,27 +149,25 @@ class _LOginPageState extends State<LOginPage> {
                         // if(_formKey.currentState.validate()){
 
 
+                        login();
 
-                          Fluttertoast.showToast(
-                              msg: "Great",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.red,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );
+                          // Fluttertoast.showToast(
+                          //     msg: "Great",
+                          //     toastLength: Toast.LENGTH_SHORT,
+                          //     gravity: ToastGravity.CENTER,
+                          //     timeInSecForIosWeb: 1,
+                          //     backgroundColor: Colors.red,
+                          //     textColor: Colors.white,
+                          //     fontSize: 16.0
+                          // );
 
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const HomePage()),
-                          );
+
                         // }
 
                       },
                       child: Text(
                         "Login",
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.white,),
                       ),
                       style: ButtonStyle(
                           elevation: MaterialStateProperty.all(1),
@@ -183,6 +183,18 @@ class _LOginPageState extends State<LOginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  void login() async{
+    final SharedPreferences _prefs = await SharedPreferences.getInstance();
+
+    _prefs.setString("username", "roshan@gmail.com");
+    _prefs.setString("pass", "password");
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ProfilePage()),
     );
   }
 }

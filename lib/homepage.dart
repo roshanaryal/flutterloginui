@@ -1,3 +1,4 @@
+import 'package:firstflutterapp/animation.dart';
 import 'package:firstflutterapp/dashboardpage.dart';
 import 'package:firstflutterapp/profilepage.dart';
 import 'package:firstflutterapp/settingspage.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
 
         },
       ),
-      body: SettingsPage()
+      body: AnimationPage()
     );
   }
 }
